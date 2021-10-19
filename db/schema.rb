@@ -63,13 +63,13 @@ ActiveRecord::Schema.define(version: 2021_10_19_135202) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.integer "type"
+    t.integer "service_type"
     t.integer "timings_in_mins"
     t.integer "price"
-    t.integer "saloons_id"
+    t.integer "saloon_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["saloons_id"], name: "index_services_on_saloons_id"
+    t.index ["saloon_id"], name: "index_services_on_saloon_id"
   end
 
 end
