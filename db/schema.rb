@@ -12,15 +12,18 @@
 
 ActiveRecord::Schema.define(version: 2021_10_19_135202) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bookings", force: :cascade do |t|
     t.time "from_time"
     t.time "to_time"
     t.date "booking_date"
     t.integer "status"
-    t.integer "customer_id"
-    t.integer "saloon_id"
-    t.integer "chair_id"
-    t.integer "service_id"
+    t.bigint "customer_id"
+    t.bigint "saloon_id"
+    t.bigint "chair_id"
+    t.bigint "service_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chair_id"], name: "index_bookings_on_chair_id"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_10_19_135202) do
 
   create_table "chairs", force: :cascade do |t|
     t.boolean "available"
-    t.integer "saloon_id"
+    t.bigint "saloon_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["saloon_id"], name: "index_chairs_on_saloon_id"
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_10_19_135202) do
     t.integer "service_type"
     t.integer "timings_in_mins"
     t.integer "price"
-    t.integer "saloon_id"
+    t.bigint "saloon_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["saloon_id"], name: "index_services_on_saloon_id"
